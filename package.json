@@ -1,0 +1,19 @@
+{
+  "name": "golf-shot",
+  "version": "0.0.1",
+  "description": "React and redux app with all the golf things",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ToddWebDev/golf-shot.git"
+  },
+  "author": "Todd WebDev <webdevtodd@gmail.com> (http://www.toddrizzolo.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ToddWebDev/golf-shot/issues"
+  },
+  "homepage": "https://github.com/ToddWebDev/golf-shot#readme"
+}
