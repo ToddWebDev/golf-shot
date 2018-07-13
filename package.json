@@ -12,6 +12,9 @@
     "url": "https://github.com/ToddWebDev/golf-shot/issues"
   },
   "homepage": "https://github.com/ToddWebDev/golf-shot#readme",
+  "scripts": {
+    "start": "babel-node tools/srcServer.js"
+  },
   "dependencies": {
     "babel-polyfill": "6.8.0",
     "bootstrap": "3.3.6",
