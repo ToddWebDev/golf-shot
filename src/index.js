@@ -7,10 +7,12 @@ import { Provider } from 'react-redux';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import { loadCourses } from './actions/courseActions';
+import { loadScores } from './actions/scoreActions';
 import './styles/styles.css'; //Webpack can import CSS files too!
 
 const store = configureStore();
 store.dispatch(loadCourses());
+store.dispatch(loadScores());
 
 render(
   <Provider store={store}>
