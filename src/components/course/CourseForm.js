@@ -6,18 +6,18 @@ const CourseForm = ({course, onSave, onChange, saving, errors}) => {
     <form>
       <h1>Manage Course</h1>
       <TextInput
-        name="title"
-        label="Title"
-        value={course.title}
+        name="name"
+        label="Name"
+        value={course.name}
         onChange={onChange}
-        error={errors.title}/>
+        error={errors.name}/>
 
       <TextInput
-        name="category"
-        label="Category"
-        value={course.category}
+        name="par"
+        label="Par"
+        value={course.par}
         onChange={onChange}
-        error={errors.category}/>
+        error={errors.par}/>
 
       <TextInput
         name="length"
@@ -25,6 +25,20 @@ const CourseForm = ({course, onSave, onChange, saving, errors}) => {
         value={course.length}
         onChange={onChange}
         error={errors.length}/>
+
+      <TextInput
+        name="slope"
+        label="Slope"
+        value={course.slope}
+        onChange={onChange}
+        error={errors.slope}/>
+
+      <TextInput
+        name="rating"
+        label="Rating"
+        value={course.rating}
+        onChange={onChange}
+        error={errors.rating}/>
 
       <input
         type="submit"

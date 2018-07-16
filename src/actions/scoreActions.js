@@ -12,5 +12,5 @@ export function loadScores() {
     }).catch(error => {
       throw(error);
     });
-  }
+  };
 }

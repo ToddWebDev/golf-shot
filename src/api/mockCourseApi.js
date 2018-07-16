@@ -30,7 +30,7 @@ const courses = [
     length: 7007,
     slope: 133,
     rating: 74.1
-  },
+  }
 ];
 
 function replaceAll(str, find, replace) {

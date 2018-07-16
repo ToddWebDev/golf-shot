@@ -9,16 +9,42 @@ export class ManageCoursePage extends React.Component {
     super(props, context);
 
     this.state = {
-      course: Object.assign({}, this.props.course),
+      course: Object.assign({}, props.course),
       errors: {}
     };
+
+    this.updateCourseState = this.updateCourseState.bind(this);
+    this.saveCourse = this.saveCourse.bind(this);
   }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.course.id != nextProps.course.id) {
+      // Necessary to populate form when existing course is loaded directly.
+      this.setState({course: Object.assign({}, nextProps.course)});
+    }
+  }
+
+  updateCourseState(event) {
+    const field = event.target.name;
+    let course = Object.assign({}, this.state.course);
+    course[field] = event.target.value;
+    return this.setState({course: course});
+  }
+
+  saveCourse(event) {
+    event.preventDefault();
+    this.props.actions.saveCourse(this.state.course);
+    this.context.router.push('/courses');
+  }
+
   render() {
     return (
       <div>
         <CourseForm 
+          onChange={this.updateCourseState}
+          onSave={this.saveCourse}
           course={this.state.course}
-          errors={this.state.errors} 
+          errors={this.state.errors}
         />
       </div>
     );
@@ -26,13 +52,29 @@ export class ManageCoursePage extends React.Component {
 }
 
 ManageCoursePage.propTypes = {
-  course: PropTypes.object.isRequired
+  course: PropTypes.object.isRequired,
   // authors: PropTypes.array.isRequired,
-  // actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired
 };
 
+//Pull in the React Router context so router is available on this.context.router.
+ManageCoursePage.contextTypes = {
+  router: PropTypes.object
+};
+
+function getCourseById(courses, id) {
+  const course = courses.filter(course => course.id == id);
+  if (course.length) return course[0]; //since filter returns an array, have to grab the first.
+  return null;
+}
+
 function mapStateToProps(state, ownProps) {
+  const courseId = ownProps.params.id; //from the path '/course/:id'
   let course = {id: '', watchHref: '', name: '', par: '', length: '', slope: '', rating: ''};
+
+  if(courseId && state.courses.length > 0) {
+    course = getCourseById(state.courses, courseId);
+  }
   return {
     course: course
   };
