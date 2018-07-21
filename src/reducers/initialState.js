@@ -1,4 +1,5 @@
 export default {
   courses: [],
-  scores: []
+  scores: [],
+  ajaxCallsInProgress: 0
 };
