@@ -9,6 +9,7 @@ import routes from './routes';
 import { loadCourses } from './actions/courseActions';
 import { loadScores } from './actions/scoreActions';
 import './styles/styles.css'; //Webpack can import CSS files too!
+import '../node_modules/toastr/build/toastr.min.css';
 
 const store = configureStore();
 store.dispatch(loadCourses());
