@@ -39,8 +39,24 @@ export class ManageCoursePage extends React.Component {
     this.context.router.push('/courses');
   }
 
+  courseFormIsValid() {
+    let formIsValid = true;
+    let errors = {};
+
+    if(this.state.course.name.length < 5) {
+      errors.name = 'Name must be at least 5 characters.';
+      formIsValid = false;
+    }
+
+    this.setState({errors: errors});
+    return formIsValid;
+  }
+
   saveCourse(event) {
     event.preventDefault();
+    if(!this.courseFormIsValid()) {
+      return;
+    }
     this.setState({saving: true});
     this.props.actions.saveCourse(this.state.course)
     .then(() => this.redirect())
