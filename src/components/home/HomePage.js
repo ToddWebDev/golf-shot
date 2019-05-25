@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 
-functionHomePage () {
+function HomePage () {
   return (
     <div className="jumbotron">
       <h1>All the Golf Things!</h1>
